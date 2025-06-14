@@ -1,0 +1,19 @@
+<div class="search-container">
+  <select [(ngModel)]="location">
+    <option value="" disabled selected>Select location</option>
+    <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+  </select>
+
+  <input type="date" [(ngModel)]="startDate" [min]="minDate" [max]="maxDate" />
+  <input type="date" [(ngModel)]="endDate" [min]="minDate" [max]="maxDate" />
+
+  <button (click)="searchCars()">Search</button>
+</div>
+
+<div class="results" *ngIf="searchResults.length">
+  <div *ngFor="let car of searchResults" class="car-card">
+    <img [src]="car.image" alt="{{ car.name }}" />
+    <h3>{{ car.name }}</h3>
+    <p>{{ car.name }} - ₹{{ car.price }}/day</p>
+  </div>
+</div>
